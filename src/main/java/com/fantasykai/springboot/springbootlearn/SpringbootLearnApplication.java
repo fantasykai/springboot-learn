@@ -10,3 +10,5 @@ public class SpringbootLearnApplication {
 		SpringApplication.run(SpringbootLearnApplication.class, args);
 	}
 }
+
+
