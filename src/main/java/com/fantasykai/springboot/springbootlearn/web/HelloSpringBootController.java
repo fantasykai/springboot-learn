@@ -15,11 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloSpringBootController {
 
+    /**
+     * 返回固定字符串
+     *
+     * @return
+     */
     @RequestMapping("/hello")
     public String sayHello() {
         return "Hello SprintBoot";
     }
 
+    /**
+     * 传递参数
+     * /sayHello?name=java
+     *
+     * @param name
+     * @return
+     */
     @RequestMapping("/sayHello")
     public String index(String name) {
         return "Hello " + name;
