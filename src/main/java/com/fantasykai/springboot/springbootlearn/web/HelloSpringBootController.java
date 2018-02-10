@@ -20,4 +20,9 @@ public class HelloSpringBootController {
         return "Hello SprintBoot";
     }
 
+    @RequestMapping("/sayHello")
+    public String index(String name) {
+        return "Hello " + name;
+    }
+
 }
