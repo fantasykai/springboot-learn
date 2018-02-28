@@ -34,7 +34,7 @@ public class HelloSpringBootController {
      */
     @RequestMapping("/sayHello")
     public String index(String name) {
-        return "Hello " + name;
+        return "Hi, " + name + ", this is spring boot Test";
     }
 
 }
