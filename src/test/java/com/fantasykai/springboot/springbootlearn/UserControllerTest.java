@@ -38,4 +38,10 @@ public class UserControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/getUsers")).andDo(MockMvcResultHandlers.print());
     }
 
+    @Test
+    public void get() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/get/fantasy")).andDo(MockMvcResultHandlers.print());
+
+    }
+
 }

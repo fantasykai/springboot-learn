@@ -1,7 +1,9 @@
 package com.fantasykai.springboot.springbootlearn.web;
 
 import com.fantasykai.springboot.springbootlearn.domain.User;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping("/getUsers")
+    @RequestMapping(value = "/getUsers", method = RequestMethod.POST)
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
         User user0 = new User();
@@ -46,6 +48,15 @@ public class UserController {
         users.add(user0);
         users.add(user1);
         return users;
+    }
+
+    @RequestMapping("/get/{name}")
+    public User get(@PathVariable String name) {
+        User user = new User();
+        user.setName(name);
+        user.setAge(16);
+        user.setSex(0);
+        return user;
     }
 
 
