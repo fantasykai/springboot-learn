@@ -1,11 +1,14 @@
 package com.fantasykai.springboot.springbootlearn.web;
 
 import com.fantasykai.springboot.springbootlearn.domain.User;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,11 @@ import java.util.List;
 @RestController
 public class UserController {
 
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
     @RequestMapping(value = "/oneUser", method = RequestMethod.GET)
     public User getUser() {
         User user = new User();
@@ -32,6 +40,11 @@ public class UserController {
         return user;
     }
 
+    /**
+     * Gets users.
+     *
+     * @return the users
+     */
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
@@ -50,6 +63,12 @@ public class UserController {
         return users;
     }
 
+    /**
+     * Get user.
+     *
+     * @param name the name
+     * @return the user
+     */
     @RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
     public User get(@PathVariable String name) {
         User user = new User();
@@ -59,5 +78,20 @@ public class UserController {
         return user;
     }
 
-
+    /**
+     * Save user.
+     *
+     * @param user   the user
+     * @param result the result
+     */
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public void saveUser(@Valid User user, BindingResult result) {
+        System.out.println("user: " + user);
+        if (result.hasErrors()) {
+            List<ObjectError> list = result.getAllErrors();
+            for (ObjectError error : list) {
+                System.out.println(error.getCode() + "-" + error.getDefaultMessage());
+            }
+        }
+    }
 }

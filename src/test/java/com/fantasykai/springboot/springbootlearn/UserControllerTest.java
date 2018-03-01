@@ -41,7 +41,13 @@ public class UserControllerTest {
     @Test
     public void get() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/user/fantasy")).andDo(MockMvcResultHandlers.print());
-
     }
+
+    @Test
+    public void saveUser() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/user").param("name", "")
+                .param("age", "180").param("sex", "2")).andDo(MockMvcResultHandlers.print());
+    }
+
 
 }

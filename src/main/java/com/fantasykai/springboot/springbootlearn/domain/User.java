@@ -26,7 +26,7 @@ public class User {
     @Min(value = 1, message = "年龄不能小于 1 岁")
     private int age;
 
-    @Pattern(regexp = "[0|1]", message = "性别只能是0或1")
+
     private int sex;
 
     public String getName() {
