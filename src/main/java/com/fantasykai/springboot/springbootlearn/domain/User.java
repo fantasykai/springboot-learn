@@ -1,6 +1,12 @@
 package com.fantasykai.springboot.springbootlearn.domain;
 
 import com.google.common.base.Objects;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -13,8 +19,14 @@ import com.google.common.base.Objects;
  */
 public class User {
 
+    @NotEmpty(message = "名字不能为空")
     private String name;
+
+    @Max(value = 150, message = "年龄不能大于 150 岁")
+    @Min(value = 1, message = "年龄不能小于 1 岁")
     private int age;
+
+    @Pattern(regexp = "[0|1]", message = "性别只能是0或1")
     private int sex;
 
     public String getName() {

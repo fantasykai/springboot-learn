@@ -21,7 +21,7 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    @RequestMapping("/getUser")
+    @RequestMapping(value = "/oneUser", method = RequestMethod.GET)
     public User getUser() {
         User user = new User();
 
@@ -32,7 +32,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/getUsers", method = RequestMethod.POST)
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
         User user0 = new User();
@@ -50,7 +50,7 @@ public class UserController {
         return users;
     }
 
-    @RequestMapping("/get/{name}")
+    @RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
     public User get(@PathVariable String name) {
         User user = new User();
         user.setName(name);

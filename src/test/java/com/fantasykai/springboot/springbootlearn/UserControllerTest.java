@@ -30,17 +30,17 @@ public class UserControllerTest {
 
     @Test
     public void getUser() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/getUser")).andDo(MockMvcResultHandlers.print());
+        mockMvc.perform(MockMvcRequestBuilders.get("/oneUser")).andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     public void getUsers() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/getUsers")).andDo(MockMvcResultHandlers.print());
+        mockMvc.perform(MockMvcRequestBuilders.get("/Users")).andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     public void get() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/get/fantasy")).andDo(MockMvcResultHandlers.print());
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/fantasy")).andDo(MockMvcResultHandlers.print());
 
     }
 
