@@ -33,5 +33,9 @@ public class UserControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/getUser")).andDo(MockMvcResultHandlers.print());
     }
 
+    @Test
+    public void getUsers() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/getUsers")).andDo(MockMvcResultHandlers.print());
+    }
 
 }

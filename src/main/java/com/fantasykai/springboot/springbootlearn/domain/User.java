@@ -15,7 +15,7 @@ public class User {
 
     private String name;
     private int age;
-    private String pass;
+    private int sex;
 
     public String getName() {
         return name;
@@ -33,12 +33,13 @@ public class User {
         this.age = age;
     }
 
-    public String getPass() {
-        return pass;
+
+    public int getSex() {
+        return sex;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setSex(int sex) {
+        this.sex = sex;
     }
 
     @Override
@@ -52,12 +53,12 @@ public class User {
         User user = (User) o;
         return age == user.age &&
                 Objects.equal(name, user.name) &&
-                Objects.equal(pass, user.pass);
+                Objects.equal(sex, user.sex);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(name, age, pass);
+        return Objects.hashCode(name, age, sex);
     }
 
     @Override

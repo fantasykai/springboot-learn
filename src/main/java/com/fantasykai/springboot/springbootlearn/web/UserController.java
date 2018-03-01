@@ -4,6 +4,9 @@ import com.fantasykai.springboot.springbootlearn.domain.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈功能详细描述〉
@@ -22,9 +25,27 @@ public class UserController {
 
         user.setName("小黑");
         user.setAge(20);
-        user.setPass("123456");
+        user.setSex(1);
 
         return user;
+    }
+
+    @RequestMapping("/getUsers")
+    public List<User> getUsers() {
+        List<User> users = new ArrayList<>();
+        User user0 = new User();
+        user0.setName("小蓝");
+        user0.setAge(18);
+        user0.setSex(0);
+
+        User user1 = new User();
+        user1.setName("小兰");
+        user1.setAge(19);
+        user1.setSex(0);
+
+        users.add(user0);
+        users.add(user1);
+        return users;
     }
 
 
