@@ -17,7 +17,7 @@ import javax.validation.constraints.Min;
  */
 public class User {
 
-    @NotEmpty(message = "{name_not_null}")
+    @NotEmpty(message = "{user.name.notEmpty}")
     private String name;
 
     @Max(value = 150, message = "年龄不能大于 150 岁")

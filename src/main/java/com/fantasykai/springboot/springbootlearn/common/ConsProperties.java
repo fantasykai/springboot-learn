@@ -15,15 +15,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConsProperties {
 
-    @Value("${name_not_null}")
-    private String name_not_null;
+    @Value("${title}")
+    private String title;
 
-    public String getName_not_null() {
-        return name_not_null;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName_not_null(String name_not_null) {
-        this.name_not_null = name_not_null;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override

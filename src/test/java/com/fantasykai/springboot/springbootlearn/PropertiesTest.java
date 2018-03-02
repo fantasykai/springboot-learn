@@ -27,7 +27,7 @@ public class PropertiesTest {
 
     @Test
     public void testProperties() throws Exception {
-        System.out.println("name_not_null: " + properties.getName_not_null());
+        System.out.println("title: " + properties.getTitle());
     }
 
 
