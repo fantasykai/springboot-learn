@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -15,7 +16,11 @@ import javax.validation.constraints.Min;
  * @see [相关类/方法]（可选）
  * @since [产品 /模块版本] （可选）
  */
-public class User {
+public class User implements Serializable {
+
+    // Editor -> Inspections -> Seralization issues -> Serializable class without 'serialVersionUID'
+    // 光标放在类名上（必须）， option + enter
+    private static final long serialVersionUID = -2242140938246146960L;
 
     @NotEmpty(message = "{user.name.notEmpty}")
     private String name;
