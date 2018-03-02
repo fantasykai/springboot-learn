@@ -5,8 +5,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -19,7 +17,7 @@ import javax.validation.constraints.Size;
  */
 public class User {
 
-    @NotEmpty(message = "名字不能为空")
+    @NotEmpty(message = "{name_not_null}")
     private String name;
 
     @Max(value = 150, message = "年龄不能大于 150 岁")
