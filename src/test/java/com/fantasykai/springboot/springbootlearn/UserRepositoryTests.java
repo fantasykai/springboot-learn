@@ -44,5 +44,14 @@ public class UserRepositoryTests {
 //        userRepository.delete(userRepository.findByUsername("xiaomiao"));
     }
 
+    @Test
+    public void testBaseQuery() {
+
+        userRepository.findAll();
+        userRepository.findOne(20L);
+        userRepository.count();
+        userRepository.exists(1L);
+    }
+
 
 }
