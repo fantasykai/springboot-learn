@@ -1,7 +1,10 @@
 package com.fantasykai.springboot.springbootlearn;
 
 import com.fantasykai.springboot.springbootlearn.entity.User;
+import com.fantasykai.springboot.springbootlearn.entity.UserDetail;
+import com.fantasykai.springboot.springbootlearn.entity.UserInfo;
 import com.fantasykai.springboot.springbootlearn.repository.UserRepository;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br>

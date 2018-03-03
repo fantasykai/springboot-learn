@@ -1,6 +1,7 @@
 package com.fantasykai.springboot.springbootlearn.repository;
 
 import com.fantasykai.springboot.springbootlearn.entity.User;
+import com.fantasykai.springboot.springbootlearn.entity.UserInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -53,7 +54,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select u from User u where u.email = ?1")
     User findByEmail(String email);
-
 
 
 }
