@@ -24,15 +24,14 @@ public class UserInfoRepositoryTests {
 
     @Resource
     private UserDetailRepository userDetailRepository;
-    
+
     public void testUserInfo() {
+
         List<UserInfo> userInfos = userDetailRepository.findUserInfo("篮球");
 
         for (UserInfo userInfo : userInfos) {
             System.out.println("address: " + userInfo.getAddress());
         }
-
-
     }
 
 }
