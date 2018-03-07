@@ -1,6 +1,10 @@
 package com.fantasykai.springboot.web.domian;
 
 import com.google.common.base.Objects;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -13,10 +17,17 @@ import com.google.common.base.Objects;
  */
 public class User {
 
+    @NotEmpty(message = "{user.name.notEmpty}")
     private String name;
 
+
+    @Max(value = 150, message = "{user.age.max}")
+    @Min(value = 1, message = "{user.age.min")
     private int sex;
 
+
+    @Max(value = 1, message = "{user.sex.value}")
+    @Min(value = 0, message = "{user.sex.value}")
     private int age;
 
     public String getName() {

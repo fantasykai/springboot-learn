@@ -59,4 +59,14 @@ public class WebApplicationTests {
         mockMvc.perform(MockMvcRequestBuilders.get("/user/fantasy")).andDo(MockMvcResultHandlers.print());
     }
 
+
+    @Test
+    public void saveUser() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                .param("name", "")
+                .param("age", "200")
+                .param("sex", "3")).andDo(MockMvcResultHandlers.print());
+
+    }
+
 }
