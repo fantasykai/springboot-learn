@@ -9,8 +9,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class HelloApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
+
+    @Test
+    public void hello() {
+        System.out.println("Hello SpringBoot");
+    }
 
 }
