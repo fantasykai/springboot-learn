@@ -1,4 +1,4 @@
-package com.fantasykai.springboot.baes;
+package com.fantasykai.springboot.hello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

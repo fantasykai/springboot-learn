@@ -1,6 +1,6 @@
-package com.fantasykai.springboot.baes;
+package com.fantasykai.springboot.hello;
 
-import com.fantasykai.springboot.baes.web.HelloSpringBootController;
+import com.fantasykai.springboot.hello.web.HelloSpringBootController;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.fantasykai.springboot.baes.web;
+package com.fantasykai.springboot.hello.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
