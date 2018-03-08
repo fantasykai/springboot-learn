@@ -4,7 +4,11 @@ import com.fantasykai.springboot.jpa.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+
+import javax.transaction.Transactional;
+import javax.ws.rs.DELETE;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -49,6 +53,17 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Page<User> findByNickName(String nickName, Pageable pageable);
 
+    @Transactional
+    @Modifying
+    @Query("update user set userName = ?1 where id = ?2")
+    int modifyById(String userName, Long id);
 
+    @Transactional
+    @Modifying
+    @Query("delete form User where id = ?1")
+    void deleteById(Long id);
+
+    @Query("select u from  User u where u.email = ?1")
+    User findByEmail(String email);
 
 }
