@@ -1,7 +1,10 @@
 package com.fantasykai.springboot.jpa.repository;
 
 import com.fantasykai.springboot.jpa.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -14,8 +17,38 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    /**
+     * 自定义简单查询
+     * 自定义的简单查询就是根据方法名来自动生成 SQL，主要的语法是 findXXBy、readAXXBy、queryXXBy、countXXBy、getXXBy 后面跟属性名称：
+     */
+
     User findByUserName(String userName);
 
+    //也可以加一些关键字 And、Or：
     User findByUserNameOrEmail(String userName, String email);
+
+    /**
+     * //    // 修改删除，统计等语法
+     * <p>
+     * Long deleteById(Long id);
+     * <p>
+     * Long countByUserName(String userName);
+     * <p>
+     * // SQL 体系中的关键词都可以使用，如 LIKE、IgnoreCase、OrderBy。、
+     * <p>
+     * List<User> findByEmailLike(String email);
+     * <p>
+     * User findbyUserNameIgnoreCase(String userName);
+     * <p>
+     * List<User> findByUserNameOrderByEmailDesc(String email);
+     */
+
+    // 支持分页查询
+    @Query("select  u from  User u")
+    Page<User> findAll(Pageable pageable);
+
+    Page<User> findByNickName(String nickName, Pageable pageable);
+
+
 
 }
