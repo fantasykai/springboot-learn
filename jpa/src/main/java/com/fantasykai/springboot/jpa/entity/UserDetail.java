@@ -1,5 +1,7 @@
 package com.fantasykai.springboot.jpa.entity;
 
+import org.springframework.boot.autoconfigure.hazelcast.HazelcastJpaDependencyAutoConfiguration;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +34,26 @@ public class UserDetail implements Serializable {
 
     @Column(nullable = true)
     private String hobby;
+
+    /**
+     * Instantiates a new User detail.
+     */
+    public UserDetail() {
+
+    }
+
+    /**
+     * Instantiates a new User detail.
+     *
+     * @param userId  the user id
+     * @param address the address
+     * @param hobby   the hobby
+     */
+    public UserDetail(String userId, String address, String hobby) {
+        this.userId = userId;
+        this.address = address;
+        this.hobby = hobby;
+    }
 
     /**
      * Gets id.
