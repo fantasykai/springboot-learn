@@ -35,6 +35,7 @@ public class UserDetail implements Serializable {
     @Column(nullable = true)
     private String hobby;
 
+
     /**
      * Instantiates a new User detail.
      */
