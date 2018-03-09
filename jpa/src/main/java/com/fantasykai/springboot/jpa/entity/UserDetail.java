@@ -136,6 +136,22 @@ public class UserDetail implements Serializable {
         this.hobby = hobby;
     }
 
+    public UserSexEnum getSex() {
+        return sex;
+    }
+
+    public void setSex(UserSexEnum sex) {
+        this.sex = sex;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
     @Override
     public String toString() {
         return com.alibaba.fastjson.JSON.toJSONString(this);

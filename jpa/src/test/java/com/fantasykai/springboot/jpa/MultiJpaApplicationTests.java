@@ -49,10 +49,10 @@ public class MultiJpaApplicationTests {
         userDS2Repository.save(new User("xiaoyu", "xiaoyu@126.com", "xiaoyu", "a123456", formattedDate));
     }
 
+
     /**
      * Test base query.
      */
-    @Test
     public void testBaseQuery() {
 
         Date date = new Date();

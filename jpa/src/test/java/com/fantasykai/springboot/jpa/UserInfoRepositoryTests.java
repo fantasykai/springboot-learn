@@ -2,6 +2,7 @@ package com.fantasykai.springboot.jpa;
 
 import com.fantasykai.springboot.jpa.entity.UserDetail;
 import com.fantasykai.springboot.jpa.entity.UserInfo;
+import com.fantasykai.springboot.jpa.entity.UserSexEnum;
 import com.fantasykai.springboot.jpa.repository.UserDetailRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,9 +30,10 @@ public class UserInfoRepositoryTests {
 
     @Test
     public void testUserDetail() {
-        userDetailRepository.save(new UserDetail("1", "中国上海", "篮球"));
-        userDetailRepository.save(new UserDetail("2", "中国深圳", "足球"));
-        userDetailRepository.save(new UserDetail("3", "中国北京", "乒乓球"));
+
+        userDetailRepository.save(new UserDetail("1", "中国上海", "篮球", UserSexEnum.MAN, "姚"));
+        userDetailRepository.save(new UserDetail("2", "中国深圳", "足球", UserSexEnum.MAN, "姚"));
+        userDetailRepository.save(new UserDetail("3", "中国北京", "乒乓球", UserSexEnum.WOMAN, "姚"));
     }
 
     @Test
