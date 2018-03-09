@@ -58,5 +58,13 @@ public class UserRepositoryTests {
         userRepository.findByNickName("xiaoming", pageable);
     }
 
+    @Test
+    public void testCustomSql() {
+
+        userRepository.modifyById("xiaoxiaohei", 1l);
+
+        userRepository.findByEmail("xiaoli@163.com");
+
+    }
 
 }

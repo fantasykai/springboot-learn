@@ -55,12 +55,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Transactional
     @Modifying
-    @Query("update user set userName = ?1 where id = ?2")
+    @Query("update User  set userName = ?1 where id = ?2")
     int modifyById(String userName, Long id);
 
     @Transactional
     @Modifying
-    @Query("delete form User where id = ?1")
+    @Query("delete from User where id = ?1")
     void deleteById(Long id);
 
     @Query("select u from  User u where u.email = ?1")
