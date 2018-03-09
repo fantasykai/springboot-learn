@@ -32,6 +32,11 @@ public class MultiJpaApplicationTests {
     private UserDS2Repository userDS2Repository;
 
 
+    /**
+     * Test save data.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testSaveData() throws Exception {
 
@@ -42,6 +47,29 @@ public class MultiJpaApplicationTests {
         userDS1Repository.save(new User("xiaohei", "xiaohei@126.com", "xiaohei", "a123456", formattedDate));
         userDS1Repository.save(new User("xiaolan", "xiaolan@126.com", "xiaolan", "a123456", formattedDate));
         userDS2Repository.save(new User("xiaoyu", "xiaoyu@126.com", "xiaoyu", "a123456", formattedDate));
+    }
+
+    /**
+     * Test base query.
+     */
+    @Test
+    public void testBaseQuery() {
+
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
+        String formattedDate = dateFormat.format(date);
+
+        User user = new User("xiaojie", "xiaojie@lieren.com", "xiaojie", "a123456", formattedDate);
+
+        userDS1Repository.findAll();
+        userDS2Repository.findOne(1L);
+        userDS2Repository.save(user);
+        user.setId(2L);
+
+        userDS1Repository.delete(user);
+        userDS1Repository.count();
+        userDS2Repository.exists(2L);
+
     }
 
 
