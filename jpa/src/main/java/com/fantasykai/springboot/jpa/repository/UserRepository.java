@@ -6,9 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-
-import javax.transaction.Transactional;
-import javax.ws.rs.DELETE;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -53,7 +51,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Page<User> findByNickName(String nickName, Pageable pageable);
 
-    @Transactional
+    @Transactional(timeout = 10)
     @Modifying
     @Query("update User  set userName = ?1 where id = ?2")
     int modifyById(String userName, Long id);

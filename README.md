@@ -11,3 +11,6 @@
 
 ### Jpa 
 > SpringBoot 结合JPA的总结
+
+### jpa-multi
+> SpringBoot 结合JPA的多数据源链接总结
