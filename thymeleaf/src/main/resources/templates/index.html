@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<!--th:include 和 th:replace 区别，include 只是加载，replace 是替换。-->
+<div th:include="layout/copyright :: copyright"></div>
+<div th:replace="layout/copyright :: copyright"></div>
+</body>
+</html>

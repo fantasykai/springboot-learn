@@ -39,3 +39,13 @@ Thymeleaf 是与众不同的，因为它使用了自然的模板技术。这意�
 #### 在 application.properties 中添加配置：
 
 spring.thymeleaf.cache=false
+
+#### 编写一个简单的页面 
+> 见 hello.html
+
+#### 编写Controller 
+> 见 HelloController
+
+### 页面布局
+
+> 见 copyright.html  index.html 
