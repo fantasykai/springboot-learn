@@ -1,6 +1,6 @@
-package com.fantasykai.springboot.jpa.repository.datasource2;
+package com.fantasykai.springboot.jpamulti.repository.datasource2;
 
-import com.fantasykai.springboot.jpa.entity.User;
+import com.fantasykai.springboot.jpamulti.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

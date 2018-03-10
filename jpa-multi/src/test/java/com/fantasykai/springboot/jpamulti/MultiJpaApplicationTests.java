@@ -1,8 +1,9 @@
-package com.fantasykai.springboot.jpa;
+package com.fantasykai.springboot.jpamulti;
 
-import com.fantasykai.springboot.jpa.entity.User;
-import com.fantasykai.springboot.jpa.repository.datasource1.UserDS1Repository;
-import com.fantasykai.springboot.jpa.repository.datasource2.UserDS2Repository;
+
+import com.fantasykai.springboot.jpamulti.entity.User;
+import com.fantasykai.springboot.jpamulti.repository.datasource1.UserDS1Repository;
+import com.fantasykai.springboot.jpamulti.repository.datasource2.UserDS2Repository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,13 +54,14 @@ public class MultiJpaApplicationTests {
     /**
      * Test base query.
      */
+    @Test
     public void testBaseQuery() {
 
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
         String formattedDate = dateFormat.format(date);
 
-        User user = new User("xiaojie", "xiaojie@lieren.com", "xiaojie", "a123456", formattedDate);
+        User user = new User("wukong", "wukong@163.com", "wukong", "a123456", formattedDate);
 
         userDS1Repository.findAll();
         userDS2Repository.findOne(1L);

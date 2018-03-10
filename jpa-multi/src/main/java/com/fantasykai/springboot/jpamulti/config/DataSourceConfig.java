@@ -1,4 +1,4 @@
-package com.fantasykai.springboot.jpa.config;
+package com.fantasykai.springboot.jpamulti.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;

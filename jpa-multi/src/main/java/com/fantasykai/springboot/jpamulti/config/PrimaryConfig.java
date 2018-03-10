@@ -1,4 +1,4 @@
-package com.fantasykai.springboot.jpa.config;
+package com.fantasykai.springboot.jpamulti.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,7 +31,7 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactoryPrimary",
         transactionManagerRef = "transactionManagerPrimary",
-        basePackages = {"com.fantasykai.springboot.jpa.repository.datasource1"})
+        basePackages = {"com.fantasykai.springboot.jpamulti.repository.datasource1"})
 public class PrimaryConfig {
 
     @Autowired
@@ -63,7 +63,7 @@ public class PrimaryConfig {
         return builder
                 .dataSource(primaryDataSource)
                 .properties(getVendorProperties(primaryDataSource))
-                .packages("com.fantasykai.springboot.jpa.entity")
+                .packages("com.fantasykai.springboot.jpamulti.entity")
                 .persistenceUnit("primaryPersistenceUnit")
                 .build();
     }

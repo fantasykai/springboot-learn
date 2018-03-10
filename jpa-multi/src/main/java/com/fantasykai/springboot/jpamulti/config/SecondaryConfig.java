@@ -1,4 +1,4 @@
-package com.fantasykai.springboot.jpa.config;
+package com.fantasykai.springboot.jpamulti.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,7 +30,7 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactorySecondary",
         transactionManagerRef = "transactionManagerSecondary",
-        basePackages = {"com.fantasykai.springboot.jpa.repository.datasource2"})
+        basePackages = {"com.fantasykai.springboot.jpamulti.repository.datasource2"})
 public class SecondaryConfig {
 
     @Autowired
@@ -59,7 +59,7 @@ public class SecondaryConfig {
         return builder
                 .dataSource(secondaryDataSource)
                 .properties(getVendorProperties(secondaryDataSource))
-                .packages("com.fantasykai.springboot.jpa.entity")
+                .packages("com.fantasykai.springboot.jpamulti.entity")
                 .persistenceUnit("secondaryPersistenceUnit")
                 .build();
     }
