@@ -18,7 +18,7 @@ import java.util.Map;
 
 /**
  * 〈一句话功能简述〉<br>
- * 〈功能详细描述〉
+ * 将数据源注入到 Factory，配置 repository、domian 的位置，需要设置一个默认的数据源
  * <p>
  *
  * @author Created by makai on 2018/03/09 .
