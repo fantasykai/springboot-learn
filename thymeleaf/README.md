@@ -48,4 +48,6 @@ spring.thymeleaf.cache=false
 
 ### 页面布局
 
-> 见 copyright.html  index.html 
+> 简单 介绍 见 copyright.html  index.html 
+
+> 简单布局： footer.html header.html  left.html layout.html

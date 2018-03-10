@@ -20,9 +20,14 @@ public class IndexController {
         return "index";
     }
 
-//    @RequestMapping("layout")
-//    public String layout() {
-//        return "layout";
-//    }
+    @RequestMapping("/layout")
+    public String layout() {
+        return "layout";
+    }
+
+    @RequestMapping("/home")
+    public String home() {
+        return "home";
+    }
 
 }
