@@ -50,4 +50,11 @@ spring.thymeleaf.cache=false
 
 > 简单 介绍 见 copyright.html  index.html 
 
-> 简单布局： footer.html header.html  left.html layout.html
+> 简单布局： footer.html header.html  left.html layout.html home.html
+
+> layout.html 就成为一个页面模板，任何页面想使用这样的布局值只需要替换中间的 content 模块即可，例见 home.html
+
+采用页面模板布局的时候有两个关键设置：
+
+- 在模板页面定义需要替换的部分：layout:fragment="content"。
+- 在需要引入模板的页面头部写 layout:decorator="layout"" ，再复写 layout:fragment="content" 中的内容。

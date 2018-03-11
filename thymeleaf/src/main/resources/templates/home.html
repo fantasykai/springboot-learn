@@ -1,3 +1,4 @@
+<!--在需要引入模板的页面头部写 layout:decorator="layout"" ，再复写 layout:fragment="content" 中的内容。-->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorator="layout">
 <head th:include="layout :: htmlhead" th:with="title='Home'"></head>
