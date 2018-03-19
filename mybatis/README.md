@@ -45,3 +45,20 @@ MyBatis 的工作流程如下：
 
 在具体的使用过程中，按照上述的流程来执行。
 
+###  MyBatis-Spring-Boot-Starter
+
+MyBatis-Spring-Boot-Starter 是 MyBatis 帮助我们快速集成 Spring Boot 提供的一个组件包。
+
+使用这个组件可以做到以下几点：
+
+构建独立的应用
+几乎可以零配置
+需要很少的 XML 配置
+
+> 注意：MyBatis-Spring-Boot-Starter 依赖于 MyBatis-Spring 和 Spring Boot，最新版 1.3.1 需要 MyBatis-Spring 1.3 以上，Spring Boot 版本 1.5 以上。
+
+其实就是 MyBatis 看 Spring Boot 这么火热也开发出一套解决方案主动来集成， 但这一集成确实解决了很多问题，使用起来比以前简单顺畅了许多。mybatis-spring-boot-starter主要提供了两种解决方案，一种是简化后的 XML 配置版，一种是使用注解解决一切问题。
+
+MyBatis 以前只有 XML 配置这种使用的形式，到了后来注解使用特别广泛，MyBatis 也顺应潮流提供了注解的支持，从这里可以看出 MyBatis 一直都跟随着主流技术的变化来完善自己。接下来介绍一下如何使用 XML 版本。
+
+
