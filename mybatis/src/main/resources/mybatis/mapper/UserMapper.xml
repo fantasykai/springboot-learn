@@ -67,7 +67,7 @@
         SET
         <if test="username != null">username = #{username},</if>
         <if test="password != null">password = #{password},</if>
-        nickname = #{nickName}
+        nickname = #{nickname}
         WHERE
         id = #{id}
     </update>

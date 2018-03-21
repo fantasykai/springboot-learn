@@ -48,4 +48,21 @@ public class UserMapperTest {
         }
     }
 
+    @Test
+    public void testUpdate() {
+        long id = 3l;
+        UserEntity user = userMapper.getOne(id);
+
+        if (null != user) {
+            System.out.println(user.toString());
+            user.setNickname("小兰");
+            userMapper.update(user);
+            Assert.assertTrue("小兰".equals(userMapper.getOne(id).getNickname()));
+        } else {
+            System.out.println("not find user  id is: " + id);
+        }
+
+
+    }
+
 }
