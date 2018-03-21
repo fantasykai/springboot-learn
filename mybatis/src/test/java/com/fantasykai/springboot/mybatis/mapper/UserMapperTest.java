@@ -7,8 +7,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -34,6 +36,16 @@ public class UserMapperTest {
         userMapper.insert(new UserEntity("xiaoli", "a123456", "小莉", UserSexEnum.WOMAN));
 
         Assert.assertEquals(3, userMapper.getAll().size());
+    }
+
+    @Test
+    public void testQuery() {
+        List<UserEntity> users = userMapper.getAll();
+        if (CollectionUtils.isEmpty(users)) {
+            System.out.println("is null");
+        } else {
+            System.out.println(users.toString());
+        }
     }
 
 }
