@@ -21,5 +21,5 @@
 ### jpa-thymeleaf
 > JPA与thymeleaf 结合做一个小demo
 
-### jpa-thymeleaf
-> JPA与thymeleaf 结合做一个小demo
+### mybatis
+> springBoot 整合mybatis的总结，这个基于xml方式的，还可以基于注解的方式
