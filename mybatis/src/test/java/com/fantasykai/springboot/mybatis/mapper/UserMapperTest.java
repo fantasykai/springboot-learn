@@ -2,6 +2,8 @@ package com.fantasykai.springboot.mybatis.mapper;
 
 import com.fantasykai.springboot.mybatis.entity.UserEntity;
 import com.fantasykai.springboot.mybatis.enums.UserSexEnum;
+import com.fantasykai.springboot.mybatis.param.UserParam;
+import com.fantasykai.springboot.mybatis.result.Page;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -72,7 +74,17 @@ public class UserMapperTest {
         } else {
             System.out.println("no data");
         }
+    }
 
+    @Test
+    public void testPage() {
+        UserParam userParam = new UserParam();
+        userParam.setUserSex("WOMAN");
+        userParam.setCurrentPage(1);
+        List<UserEntity> users = userMapper.getList(userParam);
+        long count = userMapper.getCount(userParam);
+        Page page = new Page(userParam, count, users);
+        System.out.println(page);
     }
 
 }
