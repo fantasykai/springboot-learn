@@ -61,7 +61,17 @@ public class UserMapperTest {
         } else {
             System.out.println("not find user  id is: " + id);
         }
+    }
 
+    @Test
+    public void testDelete() {
+        userMapper.insert(new UserEntity("xiaoyu", "a123456", "小莉", UserSexEnum.WOMAN));
+        int count = userMapper.delete(4L);
+        if (count > 0) {
+            System.out.println("delete!!!!!");
+        } else {
+            System.out.println("no data");
+        }
 
     }
 
