@@ -64,6 +64,11 @@
                 <artifactId>mybatis</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
+            <dependency>
+                <groupId>com.fantasykai.springboot</groupId>
+                <artifactId>mybatis-annotation</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
