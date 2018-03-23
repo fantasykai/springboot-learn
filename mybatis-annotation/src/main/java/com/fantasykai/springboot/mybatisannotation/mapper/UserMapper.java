@@ -30,6 +30,9 @@ public interface UserMapper {
     })
     List<UserEntity> getALL();
 
+    @SelectProvider(type = UserSql.class, method = "getList")
+    List<UserEntity> getList(UserParam userParam);
+
     /**
      * Gets count.
      *
