@@ -29,7 +29,4 @@ public interface UserMapper {
     int update(UserEntity user);
 
     int delete(Long id);
-
-
-
 }

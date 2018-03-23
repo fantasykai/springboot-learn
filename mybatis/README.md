@@ -61,4 +61,175 @@ MyBatis-Spring-Boot-Starter 是 MyBatis 帮助我们快速集成 Spring Boot 提
 
 MyBatis 以前只有 XML 配置这种使用的形式，到了后来注解使用特别广泛，MyBatis 也顺应潮流提供了注解的支持，从这里可以看出 MyBatis 一直都跟随着主流技术的变化来完善自己。接下来介绍一下如何使用 XML 版本。
 
+### XML 方式
+
+XML 版本保持映射文件的老传统，优化主要体现在不需要实现 Dao 的实现层，系统会自动根据方法名在映射文件中找到对应的 SQL。
+
+#### 相关配置
+
+##### 关键依赖包
+
+当然任何模式都需要首先引入mybatis-spring-boot-starter的 pom 文件
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+##### application 配置
+
+application.properties 添加相关配置：
+
+        mybatis.config-locations=classpath:mybatis/mybatis-config.xml
+        mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
+        mybatis.type-aliases-package=com.fantasykai.springboot.mybatis.entity
+        
+        
+        spring.datasource.driverClassName=com.mysql.jdbc.Driver
+        spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+        spring.datasource.username=root
+        spring.datasource.password=mysql2017
+        
+
+- mybatis.config-locations：配置 mybatis-config.xml 路径，mybatis-config.xml 中配置 MyBatis 基础属性。
+- mybatis.mapper-locations：配置 Mapper 对应的 XML 文件路径
+- mybatis.type-aliases-package：配置项目中实体类包路径
+- spring.datasource.*：数据源配置
+
+##### 启动类中增加扫码
+
+在启动类中添加对 Mapper 包扫描@MapperScan，Spring Boot 启动的时候会自动加载包路径下的 Mapper。
+
+```
+@Spring BootApplication
+@MapperScan("com.fantasykai.springboot.mybatis.mapper")
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}   
+```
+
+> 或者直接在 Mapper 类上面添加注解@Mapper
+
+#### 开发 SQL
+
+##### MyBatis 公共属性
+
+mybatis-config.xml，主要配置常用的 typeAliases，设置类型别名为 Java 类型设置一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余。
+
+```
+<configuration>
+    <typeAliases>
+        <typeAlias alias="Integer" type="java.lang.Integer" />
+        <typeAlias alias="Long" type="java.lang.Long" />
+        <typeAlias alias="HashMap" type="java.util.HashMap" />
+        <typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
+        <typeAlias alias="ArrayList" type="java.util.ArrayList" />
+        <typeAlias alias="LinkedList" type="java.util.LinkedList" />
+    </typeAliases>
+</configuration>
+```
+
+这样在使用 Mapper.xml 的时候，需要引入可以直接这样写：
+
+```
+resultType="Integer" 
+//或者
+parameterType="Long"
+```
+
+添加 User 的映射文件
+ 1）指明对应文件的 Mapper 类地址：
+
+        <mapper namespace="com.fantasykai.springboot.mybatis.mapper.UserMapper" >
+
+ 2）配置表结构和类的对应关系：
+
+```
+    <resultMap id="BaseResultMap" type="com.fantasykai.springboot.mybatis.entity.UserEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="user_sex" property="userSex" javaType="com.fantasykai.springboot.mybatis.enums.UserSexEnum"/>
+        <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    </resultMap>
+```
+ 
+这里为了更好的贴近工作情况，故意将类的两个字段和数据库字段设置为不一致，并且有一个使用了枚举。使用枚举有一个非常大的优点，插入此属性的数据会自动进行校验，如果不是枚举的内容会报错。
+
+  3）写具体的 SQL 语句，比如这样：
+
+```
+<select id="getAll" resultMap="BaseResultMap"  >
+   SELECT 
+   *
+   FROM users
+</select>
+```
+
+MyBatisXML 有一个特点是可以复用 XML，比如公用的一些 XML 片段可以提取出来，在其他 SQL 中去引用，如：
+```
+<sql id="Base_Column_List" >
+    id, userName, passWord, user_sex, nick_name
+</sql>
+
+<select id="getAll" resultMap="BaseResultMap"  >
+   SELECT 
+   <include refid="Base_Column_List" />
+   FROM users
+</select>  
+```
+
+这个例子就是，上面定义了需要查询的表字段，下面 SQL 使用 include 引入，避免了写太多重复的配置内容。
+
+#### 编写 Dao 层的代码
+
+```
+public interface UserMapper {
+
+    List<UserEntity> getAll();
+
+    List<UserEntity> getList(UserParam userParam);
+
+    int getCount(UserParam userParam);
+
+    UserEntity getOne(Long id);
+
+    void insert(UserEntity user);
+
+    int update(UserEntity user);
+
+    int delete(Long id);
+}
+```
+> 注意：这里的方法名需要和 XML 配置中的 id 属性一致，不然会找不到方法去对应执行的 SQL。   
+
+测试使用
+
+按照Spring 一贯使用形式， 直接将对应的 Mapper 注入即可
+
+    @Resource
+    private UserMapper userMapper;
+
+然后直接使用 userMapper 进行数据库操作即可
+
+```
+@Test
+public void testUser()  {
+    //增加
+    userMapper.insert(new UserEntity("aa", "a123456", UserSexEnum.MAN));
+    //删除
+    int count=userMapper.delete(29l);
+    //修改
+    userMapper.update(user);
+    //查询
+    List<UserEntity> users = userMapper.getAll();
+    UserEntity user = userMapper.getOne(1l);
+}
+``` 
+
+在示例代码中，写了两份的使用，一个是 Test，一个在 Controller 层，方便查看。
 
